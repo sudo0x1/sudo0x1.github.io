@@ -1,0 +1,93 @@
+<div class="topbar clearfix mb-2" [ngStyle]="{backgroundColor:'var(--blue-500)'}" >
+    <div class="topbar-left">
+        <a routerLink="/">
+            <!-- <img src="assets/logo.png" class="topbar-logo" routerLink="/" /> -->
+        </a>
+    </div>
+
+    <div class="topbar-right">
+        <a id="menu-button" href="#" (click)="appMain.onMenuButtonClick($event)"
+           [ngClass]="{'menu-button-rotate': appMain.rotateMenuButton}">
+            <i class="pi pi-angle-left"></i>
+       </a>
+
+        <a id="topbar-menu-button" href="#" (click)="appMain.onTopbarMenuButtonClick($event)">
+            <i class="pi pi-bars"></i>
+        </a>
+
+        <ul class="topbar-items fadeInDown" [ngClass]="{'topbar-items-visible': appMain.topbarMenuActive}">
+            <li #profile class="profile-item" 
+                [ngClass]="{'active-top-menu':appMain.activeTopbarItem === profile}">
+
+                <!-- <a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
+                    <img class="profile-image" src="http://127.0.0.1:8080/api/v1/accounts/{{user.id}}/photo" />
+                    <span class="topbar-item-name">{{user.username}}</span>
+                    <i class="pi pi-fw pi-chevron-down"></i>
+                    <span class="topbar-item-role">{{user.role[0]}}</span>
+                    <span class="topbar-item-role">{{user.role[0]}}</span>
+                </a> -->
+                <!-- <a href="#" (click)="appMain.onTopbarItemClick($event,profile)" >
+                    <img class="profile-image" src="http://127.0.0.1:8080/api/v1/accounts/{{user.id}}/photo" />
+                    <span class="profile-name">{{user.username}}</span>
+                    <i class="pi pi-fw pi-chevron-down"></i>
+                    <span class="profile-role">{{user.role[0]}}</span>
+                </a> -->
+                <ul class="layout-menu" [ngClass]="{'fadeInDown':!appMain.isMobile()}">
+                    <li role="menuitem">
+                        <a href="#" (click)="appMain.onTopbarSubItemClick($event)">
+                            <i class="pi pi-fw pi-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="#" (click)="appMain.onTopbarSubItemClick($event)">
+                            <i class="pi pi-fw pi-lock"></i>
+                            <span>Privacy</span>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="#" (click)="appMain.onTopbarSubItemClick($event)">
+                            <i class="pi pi-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a  [routerLink]="['/login']"  (click)="appMain.onTopbarSubItemClick($event)">
+                            <i class="pi pi-fw pi-sign-out"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li #notifications [ngClass]="{'active-top-menu':appMain.activeTopbarItem === notifications}">
+                <a href="#" (click)="appMain.onTopbarItemClick($event,notifications)">
+                    <i class="topbar-icon pi pi-fw pi-bell"></i>
+                    <span class="topbar-badge animated rubberBand">{{notificationsList.length}}</span>
+                    <span class="topbar-item-name">Notifications</span>
+                </a>
+                <ul class="layout-menu" [ngClass]="{'fadeInDown':!appMain.isMobile()}">
+                    <li role="menuitem" *ngFor="let notification of notificationsList">
+                        <a (click)="markNotificationAsRead(notification.id)" >
+                            <!-- <i class="pi pi-fw pi-sliders-h" *ngIf="!notification.read"></i> -->
+                            <span *ngIf="!notification.read">{{notification.message  }}</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="layout-menu" [ngClass]="{'fadeInDown':!appMain.isMobile()}">
+                    <li role="menuitem" *ngIf="notificationsList.length===0">
+                        <a  >
+                            <span >Aucune notification ...</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li #search class="search-item" [ngClass]="{'active-top-menu':appMain.activeTopbarItem === search}"
+                (click)="appMain.onTopbarItemClick($event,search)">
+                <div class="topbar-search">
+                    <input type="text" placeholder="Recherche" />
+                    <i class="pi pi-search"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

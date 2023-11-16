@@ -1,0 +1,25 @@
+<p-toast></p-toast>
+<div class="dashboard p-grid">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="widget-overview overview-box-4">
+            <div class="overview-box-title">
+                <i class="pi pi-user"></i>
+                <span>Nombre Transfert</span>
+            </div>
+            <div class="overview-box-count">{{nombre_transfert_by_user}}</div>
+        </div>
+    </div>
+   
+
+
+    <!-- <p-chart class="p-md-12" type="doughnut" [data]="data"></p-chart> -->
+
+
+
+    <div class="p-col-12">
+        <div class="card">
+            <h5>Calendrier</h5>
+            <p-fullCalendar  [events]="events" [options]="fullcalendarOptions" ></p-fullCalendar>
+        </div>
+    </div>
+</div>

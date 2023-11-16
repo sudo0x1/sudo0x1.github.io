@@ -1,0 +1,50 @@
+<p-toast></p-toast>
+<div class="dashboard p-grid">
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="widget-overview overview-box-1">
+            <div class="overview-box-title">
+                <i class="pi pi-inbox"></i>
+                <span>Comptes</span>
+            </div>
+            <div class="overview-box-count">{{active_accounts}}</div>
+            <!-- <div class="overview-box-stats">12 less than yesterday</div> -->
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="widget-overview overview-box-3">
+            <div class="overview-box-title">
+                <i class="pi pi-folder"></i>
+                <span>Logins</span>
+            </div>
+            <div class="overview-box-count">{{logins}}</div>
+            <!-- <div class="overview-box-stats">30 more than yesterday</div> -->
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="widget-overview overview-box-4">
+            <div class="overview-box-title">
+                <i class="pi pi-user"></i>
+                <span>Clients</span>
+            </div>
+            <div class="overview-box-count">{{client_count}}</div>
+            <!-- <div class="overview-box-stats">250 more than yesterday</div> -->
+        </div>
+    </div>
+    <!-- <div class="p-col-12 p-md-6 p-lg-3">
+        <div class="widget-overview overview-box-2">
+            <div class="overview-box-title">
+                <i class="pi pi-map-marker"></i>
+                <span>Demande congés</span>
+            </div>
+            <div class="overview-box-count">{{demande_conge}}</div>
+            <div class="overview-box-stats">46 more than yesterday</div>
+        </div>
+    </div> -->
+
+    <div class="p-col-12">
+        <div class="card">
+            <h5>Calendrier</h5>
+            <p-fullCalendar  [events]="d" [options]="fullcalendarOptions" ></p-fullCalendar>
+        </div>
+    </div>
+</div>

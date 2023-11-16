@@ -1,0 +1,103 @@
+<!-- <p-toast></p-toast>
+<div class="container">
+      <div class="login form">
+        <header>Login</header>
+        <form>
+          <input type="text" name="username" ng-model="username" [(ngModel)]="username" placeholder="Username" pInputText/>
+          <input type="password" ng-model="password" name="password"  [(ngModel)]="password" placeholder="Password" pPassword/>
+          <a [routerLink]="['/forgotpassword']" >Forgot password?</a>
+          <input type="button"  (click)="onSubmit()"  class="button" value="Login">
+        </form>
+       
+  </div> -->
+<!-- <body>
+  <div class="container">
+    <div class="row">
+        <img src="/assets/login.jpg" alt="img" class="img">
+    </div>
+    <div class="row">
+        <form action="#" class="form active" id="login">
+            <h2>Login</h2>
+            <label for="email">Email Address</label>
+            <div class="pass-reset" onclick="activeInput(this)">
+                <input type="email" name="email" class="email" id="emailInput" placeholder="name@mail.com">
+            </div>
+            <label for="password">Password</label>
+            <div class="pass-reset" onclick="activeInput(this)">
+                <input type="password" class="password" name="password" id="password" placeholder="**********">
+                <a href="#" class="reset-password">Reset Password</a>
+            </div>
+            <div class="pass-reset remember-box">
+                <input type="checkbox" name="remember" class="remember" id="remember"><span class="remember-text">Rememeber Password</span>
+            </div>
+            <button class="btn btn-login">Login</button>
+            <p>Don't have an account? <a onclick="changeToRegister()" id="changeToRegister">Sign up</a></p>
+            <p class="or">or</p>
+            <button class="btn btn-gogle-auth"><i class="google ri-google-fill"></i>Authorize with Google</button>
+        </form>
+        <form action="#" class="form" id="register">
+            <h2>Register</h2>
+            <label for="email">Email Address</label>
+            <div class="pass-reset" onclick="activeInput(this)">
+                <input type="email" name="email" class="email" id="emailInput" placeholder="name@mail.com">
+            </div>
+            <label for="password">Password</label>
+            <div class="pass-reset" onclick="activeInput(this)">
+                <input type="password" class="password" name="password" id="password" placeholder="**********">
+            </div>
+            <label for="re-password">Re-Password</label>
+            <div class="pass-reset" onclick="activeInput(this)">
+                <input type="password" class="password" name="re-password" id="re-password" placeholder="**********">
+            </div>
+            <button class="btn btn-login">Register</button>
+            <p>Do you have an account? <a onclick="changeToLogin()" id="chnageToLogin">Sign in</a></p>
+            <p class="or">or</p>
+            <button class="btn btn-gogle-auth"><i class="google ri-google-fill"></i>Authorize with Google</button>
+        </form>
+    </div>
+</div>
+</body> -->
+<p-toast></p-toast>
+
+<body>
+	<div class="parent clearfix">
+		<div class="bg-illustration">
+
+			<div class="burger-btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+
+		</div>
+
+		<div class="login">
+			<div class="container">
+				<h1>Connectez-vous pour accéder  <br /> à votre compte.</h1>
+
+				<div class="login-form">
+					<form action="">
+						<label>E-mail</label>
+						<input type="email" placeholder="E-mail" name="username" ng-model="username"
+							[(ngModel)]="username" pInputText>
+						<label>Mot de Passe</label>
+						<input type="password" ng-model="password" name="password" [(ngModel)]="password"
+							placeholder="Mot de Passe" pPassword>
+
+						<div class="remember-form">
+							<input type="checkbox">
+							<span>Remember me</span>
+						</div>
+						<div class="forget-pass">
+							<a [routerLink]="['/forgotpassword']">Mot de passe oublié ?</a>
+						</div>
+
+						<button type="submit" (click)="onSubmit()"> S'identifier </button>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>

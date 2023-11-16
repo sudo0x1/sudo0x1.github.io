@@ -1,0 +1,78 @@
+<div class="p-grid">
+	<div class="p-col-12">
+
+		<p-toast></p-toast>
+
+		<div class="card">
+			
+
+			<p-table #dt [value]="transferts" [columns]="cols_user" [rows]="10" [paginator]="true" [globalFilterFields]="['username','email','cin','phone']"
+					 [(selection)]="selectedTransfert" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+					 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						<h5 class="p-m-0">l'historique des opérations </h5>
+						<span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Recherche..." />
+                    </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+						<th pSortableColumn="client">Client ID<p-sortIcon field="client"></p-sortIcon></th>
+						<th pSortableColumn="Beneficiaire">Beneficiaire Id <p-sortIcon field="Beneficiaire"></p-sortIcon></th>
+						<th pSortableColumn="montant">Montant <p-sortIcon field="montant"></p-sortIcon></th>
+						<th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+						<th></th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-user>
+					<tr>
+						<td>
+							<p-tableCheckbox [value]="user"></p-tableCheckbox>
+						</td>
+                        <td><span class="p-column-title">Client ID </span>
+                            {{user.clientId}}
+                        </td>
+                        
+                        <td><span class="p-column-title">Beneficiaire Id</span>
+                            {{user.beneficiaireId}}
+                        </td>
+                       
+                        <td><span class="p-column-title">Montant</span>
+							{{user.montant}}
+                        </td>
+						<td><span class="p-column-title">Date</span>
+							{{user.date}}
+                        </td>
+						<!-- <td><span class="p-column-title">Status</span>
+                          
+							<p-tag styleClass="p-mr-2"  *ngIf="user.balance > 20000"  severity="info"  value="BON CLIENT"></p-tag>
+							<p-tag styleClass="p-mr-2" severity="success"   *ngIf="user.balance <= 20000 && user.balance > 3000" value="CLIENT NORMAL"></p-tag>
+							<p-tag styleClass="p-mr-2" severity="warning" value="Info" *ngIf="user.balance < 3000" value="MAUVAIS CLIENT"></p-tag>
+							
+                        </td> -->
+						<!-- <td> -->
+							<!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user)"></button> -->
+							<!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteUser(user)"></button> -->
+						<!-- </td> -->
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="summary">
+					<div class="p-d-flex p-ai-center p-jc-between">
+						Au total, il y a {{users ? users.length : 0 }}  des opérations.
+					</div>
+				</ng-template>
+			</p-table>
+		</div>
+
+		
+
+		<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+	</div>
+</div>

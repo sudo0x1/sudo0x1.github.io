@@ -1,0 +1,79 @@
+<div class="p-grid">
+	<div class="p-col-12">
+
+		<p-toast></p-toast>
+
+		<div class="card">
+			<!-- <p-toolbar styleClass="p-mb-4">
+				<ng-template pTemplate="left">
+					<button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+					<button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteSelectedUsers()" [disabled]="!selectedUsers || !selectedUsers.length"></button>
+				</ng-template>
+			</p-toolbar> -->
+
+			<p-table #dt [value]="users" [columns]="cols_user" [rows]="10" [paginator]="true" [globalFilterFields]="['username','email','solde','phone']"
+					 [(selection)]="selectedUsers" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+					 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						<h5 class="p-m-0">Gérer les bons clients </h5>
+						<span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Recherche..." />
+                    </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+						<th pSortableColumn="username">Nom d'utilisateur <p-sortIcon field="username"></p-sortIcon></th>
+						<th pSortableColumn="email">E-mail <p-sortIcon field="email"></p-sortIcon></th>
+						<th pSortableColumn="phone">Téléphone <p-sortIcon field="phone"></p-sortIcon></th>
+						<th pSortableColumn="solde">Solde <p-sortIcon field="solde"></p-sortIcon></th>
+						<th></th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-user>
+					<tr>
+						<td>
+							<p-tableCheckbox [value]="user"></p-tableCheckbox>
+						</td>
+                        <td><span class="p-column-title">Nom d'utilisateur </span>
+                            {{user.username}}
+                        </td>
+                      
+                        <td><span class="p-column-title">E-mail</span>
+                            {{user.email}}
+                        </td>
+                        <td><span class="p-column-title">Téléphone</span>
+							{{user.phoneNumber}}
+                        </td>
+                        <td><span class="p-column-title">Solde</span>
+							{{user.balance}}
+                        </td>
+						<!-- <td> -->
+							<!-- <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-help p-mr-2" (click)="viewEmploye(user)"></button> -->
+
+							<!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user)"></button> -->
+							<!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteUser(user)"></button> -->
+						<!-- </td> -->
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="summary">
+					<div class="p-d-flex p-ai-center p-jc-between">
+						Au total, il y a {{users ? users.length : 0 }} bons clients.
+					</div>
+				</ng-template>
+			</p-table>
+		</div>
+
+		<!--  -->
+
+		
+
+		<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+	</div>
+</div>

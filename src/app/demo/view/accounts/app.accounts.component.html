@@ -1,0 +1,99 @@
+<div class="p-grid">
+	<div class="p-col-12">
+
+		<p-toast></p-toast>
+
+		<div class="card">
+			<!-- <p-toolbar styleClass="p-mb-4">
+				<ng-template pTemplate="left">
+					<button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+					<button pButton pRipple label="Supprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteSelectedAccounts()" [disabled]="!selectedAccounts || !selectedAccounts.length"></button>
+				</ng-template>
+			</p-toolbar> -->
+
+			<p-table #dt [value]="accounts" [columns]="cols_account" [rows]="10" [paginator]="true" [globalFilterFields]="['username','email']"
+					 [(selection)]="selectedAccounts" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+					 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+				<ng-template pTemplate="caption">
+					<div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+						<h5 class="p-m-0">Gérer les comptes
+						</h5>
+						<span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Recherche..." />
+                    </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="width: 3rem">
+							<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+						</th>
+						<th pSortableColumn="username">Nom d'utilisateur<p-sortIcon field="username"></p-sortIcon></th>
+						<th pSortableColumn="email">E-mail <p-sortIcon field="email"></p-sortIcon></th>
+						<th>Role</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-account>
+					<tr>
+						<td>
+							<p-tableCheckbox [value]="account"></p-tableCheckbox>
+						</td>
+                        <td><span class="p-column-title">Nom d'utilisateur</span>
+                            {{account.username}}
+                        </td>
+                        <td><span class="p-column-title">E-mail</span>
+                            {{account.email}}
+                        </td>
+						<td><span class="p-column-title">Role</span>
+                          
+							<p-tag styleClass="p-mr-2"  *ngIf="account.role.name=='BANQUIER'" value="{{account.role.name}}"></p-tag>
+							<p-tag styleClass="p-mr-2" severity="success"   *ngIf="account.role.name=='CLIENT'" value="{{account.role.name}}"></p-tag>
+							<!-- <p-tag styleClass="p-mr-2" severity="info" value="Info" *ngIf="account.role.name=='ADMIN'" value="{{account.role.name}}"></p-tag> -->
+							
+                        </td>
+                       
+            
+						<!-- <td> -->
+							<!-- <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-help p-mr-2" (click)="viewAccount(account)"></button> -->
+							<!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editAccount(account)"></button> -->
+							<!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteAccount(account)"></button> -->
+						<!-- </td> -->
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="summary">
+					<div class="p-d-flex p-ai-center p-jc-between">
+						Au total il y a {{accounts ? accounts.length : 0 }} comptes.
+					</div>
+				</ng-template>
+			</p-table>
+		</div>
+
+		<p-dialog [(visible)]="accountDialog" [style]="{width: '700px'}" header="Détails du compte" [modal]="true" styleClass="p-fluid">
+			<ng-template pTemplate="content">
+				<div class="p-field" >
+					<p-dropdown [options]="employees"  [virtualScroll]="true" itemSize="30" optionLabel="username"  (onChange)="onChange()" [(ngModel)]="selectedEmployee" placeholder="Select a Employee" [showClear]="true"></p-dropdown>
+				</div>
+				<div class="p-field">
+					<label for="email">E-mail</label>
+					<input  type="email" pInputText id="email" pInputText  [(ngModel)]="account.email" required />
+					<small class="p-invalid" *ngIf="submitted && !account.email">Un e-mail est requis.</small>
+				</div>
+			
+				<div class="p-field" >
+					<p-dropdown [options]="roles" optionLabel="name"  [virtualScroll]="true" itemSize="30"  [(ngModel)]="selectedDrop" placeholder="Sélectionnez un Role" [showClear]="true"></p-dropdown>
+				</div>
+					
+			</ng-template>
+
+			<ng-template pTemplate="footer">
+
+				<button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-danger" (click)="hideDialog()"></button>
+				<button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-success" (click)="saveAccount()"></button>
+			</ng-template>
+		</p-dialog>
+
+		<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+	</div>
+</div>

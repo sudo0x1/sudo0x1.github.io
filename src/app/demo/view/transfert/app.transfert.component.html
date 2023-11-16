@@ -1,0 +1,26 @@
+
+<p-toast></p-toast>
+<div class="card">
+	<p-toolbar styleClass="p-mb-4">
+		<ng-template pTemplate="left">
+		Bonjour MR "{{user.username}}"<br>
+		Votre Solde est de {{user.balance}} DH <br>
+		Votre code pour Transfert d'argent {{user.userId}}
+		</ng-template>
+	</p-toolbar>
+</div>
+<div class="card p-fluid widget-contact-form">
+	<h5>Transfert d'argent</h5>
+	<div class="p-grid">
+		<div class="p-col-12">
+			<input type="number" pInputText placeholder="Montant" [(ngModel)]="montant" >
+		</div>
+		<div class="p-col-12">
+			<input type="text" pInputText placeholder="ID beneficiaire" [(ngModel)]="beneficiaireId">
+		</div>
+		
+		<div class="p-col-12">
+			<button type="button" label="Transfert" icon="pi pi-check" pButton (click)="save()"></button>
+		</div>
+	</div>
+</div>

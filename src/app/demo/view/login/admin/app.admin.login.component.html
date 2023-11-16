@@ -1,0 +1,74 @@
+<!-- <p-toast></p-toast>
+<div class="container">
+      <div class="login form">
+        <header>Login</header>
+        <form>
+          <input type="text" name="username" ng-model="username" [(ngModel)]="username" placeholder="Username" pInputText/>
+          <input type="password" ng-model="password" name="password"  [(ngModel)]="password" placeholder="Password" pPassword/>
+          <a [routerLink]="['/forgotpassword']" >Forgot password?</a>
+          <input type="button"  (click)="onSubmit()"  class="button" value="Login">
+        </form>
+       
+  </div> -->
+      <!-- <div class="registration form">
+        <header>Signup</header>
+        <form action="#">
+          <input type="text" placeholder="Enter your email">
+          <input type="password" placeholder="Create a password">
+          <input type="password" placeholder="Confirm your password">
+          <input type="button" class="button" value="Signup">
+        </form>
+        <div class="signup">
+          <span class="signup">Already have an account?
+           <label for="check">Login</label>
+          </span>
+        </div>
+      </div> -->
+  <!-- </div> -->
+
+
+  <p-toast></p-toast>
+  
+  <body>
+    <div class="parent clearfix">
+      <div class="bg-illustration">
+  
+        <div class="burger-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+  
+      </div>
+  
+      <div class="login">
+        <div class="container">
+          <h1>Connectez-vous pour accéder  <br /> à votre compte.</h1>
+  
+          <div class="login-form">
+            <form action="">
+              <label>E-mail</label>
+              <input type="email" placeholder="E-mail" name="username" ng-model="username" [(ngModel)]="username"
+                pInputText>
+              <label>Mot de Passe</label>
+              <input type="password" ng-model="password" name="password" [(ngModel)]="password" placeholder="Mot de Passe"
+                pPassword>
+  
+              <div class="remember-form">
+                <input type="checkbox">
+                <span>Remember me</span>
+              </div>
+              <br>
+              <div class="forget-pass ">
+                <a [routerLink]="['/forgotpassword']">Mot de passe oublié ?</a>
+              </div>
+  
+              <button type="submit" (click)="onSubmit()"> S'identifier </button>
+  
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </body>
