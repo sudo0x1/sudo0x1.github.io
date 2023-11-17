@@ -57,7 +57,7 @@
 						<td><span class="p-column-title">Status</span>
                           
 							<p-tag styleClass="p-mr-2"  *ngIf="user.balance > 20000"  severity="info"  value="BON CLIENT"></p-tag>
-							<p-tag styleClass="p-mr-2" severity="success"   *ngIf="user.balance <= 20000 && user.balance > 3000" value="CLIENT NORMAL"></p-tag>
+							<p-tag styleClass="p-mr-2" severity="success"   *ngIf="user.balance <= 20000 && user.balance >= 3000" value="CLIENT NORMAL"></p-tag>
 							<p-tag styleClass="p-mr-2" severity="warning" value="Info" *ngIf="user.balance < 3000" value="MAUVAIS CLIENT"></p-tag>
 							
                         </td>
