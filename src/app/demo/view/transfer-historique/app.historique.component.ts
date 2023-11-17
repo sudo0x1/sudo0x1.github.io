@@ -49,13 +49,7 @@ export class AppHistoriqueComponent implements OnInit {
     }
 
     ngOnInit() {
-        // if (!this.tokenService.is_BANQUIER()) {
-        //     console.log(this.tokenService.is_BANQUIER());
-        //     this.messageService.add({ severity: 'warning', summary: 'WARNING', detail: "Vous n'aveez pas le droit d'acceder a cette page!", life: 3000 });
-        //     this.router.navigateByUrl('/client');
-        // }
-        // this.update = false;
-        // this.formData = new FormData();
+    
         this.userservice.getHistoriqueTransactions(this.client.id).subscribe(data => {
             this.transferts = data;
         }, err => { });
@@ -63,7 +57,10 @@ export class AppHistoriqueComponent implements OnInit {
             { field: 'client id', header: 'Client Id' },
             { field: 'benificaire id', header: 'Benificaire id' },
             { field: 'montant', header: 'Montant' },
+            { field: 'type', header: 'Type' },
+
             { field: 'date', header: 'Date' }
+
         ];
 
     }

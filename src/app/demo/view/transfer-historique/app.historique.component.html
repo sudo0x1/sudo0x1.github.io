@@ -27,40 +27,38 @@
 						<th pSortableColumn="client">Client ID<p-sortIcon field="client"></p-sortIcon></th>
 						<th pSortableColumn="Beneficiaire">Beneficiaire Id <p-sortIcon field="Beneficiaire"></p-sortIcon></th>
 						<th pSortableColumn="montant">Montant <p-sortIcon field="montant"></p-sortIcon></th>
+						<th pSortableColumn="type">Type <p-sortIcon field="type"></p-sortIcon></th>
 						<th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
 						<th></th>
 					</tr>
 				</ng-template>
-				<ng-template pTemplate="body" let-user>
+				<ng-template pTemplate="body" let-hist>
 					<tr>
 						<td>
-							<p-tableCheckbox [value]="user"></p-tableCheckbox>
+							<p-tableCheckbox [value]="hist"></p-tableCheckbox>
 						</td>
                         <td><span class="p-column-title">Client ID </span>
-                            {{user?.clientId}}
+                            {{hist?.clientId}}
                         </td>
                         
                         <td><span class="p-column-title">Beneficiaire Id</span>
-                            {{user?.beneficiaireId}}
+                            {{hist?.beneficiaireId}}
                         </td>
                        
                         <td><span class="p-column-title">Montant</span>
-							{{user?.montant}}
+							{{hist?.montant}}
+                        </td>
+						<td><span class="p-column-title">Status</span>
+                          
+							<p-tag styleClass="p-mr-2"  *ngIf="hist.clientId==client.id"  severity="info"  value="SEND"></p-tag>
+							<p-tag styleClass="p-mr-2" severity="success"   *ngIf="hist.beneficiaireId==client.id" value="RECEIVE"></p-tag>
+							
                         </td>
 						<td><span class="p-column-title">Date</span>
-							{{user?.date}}
+							{{hist?.date}}
                         </td>
-						<!-- <td><span class="p-column-title">Status</span>
-                          
-							<p-tag styleClass="p-mr-2"  *ngIf="user.balance > 20000"  severity="info"  value="BON CLIENT"></p-tag>
-							<p-tag styleClass="p-mr-2" severity="success"   *ngIf="user.balance <= 20000 && user.balance > 3000" value="CLIENT NORMAL"></p-tag>
-							<p-tag styleClass="p-mr-2" severity="warning" value="Info" *ngIf="user.balance < 3000" value="MAUVAIS CLIENT"></p-tag>
-							
-                        </td> -->
-						<!-- <td> -->
-							<!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editUser(user)"></button> -->
-							<!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteUser(user)"></button> -->
-						<!-- </td> -->
+						
+				
 					</tr>
 				</ng-template>
 				<ng-template pTemplate="summary">

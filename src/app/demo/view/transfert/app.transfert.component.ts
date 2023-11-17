@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { UserService } from '../../service/user.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../service/TokenStorageService';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     templateUrl: './app.transfert.component.html',
@@ -60,15 +58,16 @@ export class AppTransfertComponent implements OnInit {
         };
       }
       save():void{
-        // console.log(this.fundTransferForm.value);
         this.fundTransfer.beneficiaireId = this.beneficiaireId;
         this.fundTransfer.montant = this.montant;
 
         this.userservice.transferArgent(this.fundTransfer).subscribe(data => {
-          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Transfert done.', life: 3000 });
-          // this.ngOnInit();
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Transfert done.', life: 4000 });
+          this.user.balance = this.user.balance - this.montant;
+          this.montant = 0;
+          this.beneficiaireId = "";
         }, err => {
-            this.messageService.add({ severity: 'error', summary: 'Successful', detail: 'Erreur, réessayez.', life: 3000 });
+            this.messageService.add({ severity: 'error', summary: 'Successful', detail: err.error.message, life: 4000 });
         });
       }
       
