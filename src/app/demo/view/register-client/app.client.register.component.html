@@ -1,0 +1,47 @@
+
+<p-toast></p-toast>
+
+<body>
+	<div class="parent clearfix">
+		<div class="bg-illustration">
+
+			<div class="burger-btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+
+		</div>
+
+		<div class="login">
+			<div class="container">
+				<h1>créer un compte</h1>
+
+				<div class="login-form">
+					<form action="">
+                        <label>Nom d'utilisateur</label>
+						<input type="username" placeholder="username" name="username" ng-model="username"
+							[(ngModel)]="username" pInputText>
+						<label>E-mail</label>
+						<input type="email" placeholder="E-mail" name="email" ng-model="email"
+							[(ngModel)]="email" pInputText>
+						<label>Mot de Passe</label>
+						<input type="password" ng-model="password" name="password" [(ngModel)]="password"
+							placeholder="Mot de Passe" pPassword>
+
+					
+						
+
+						<button type="submit" (click)="onSubmit()"> register </button>
+
+                        <div class="">
+							<a [routerLink]="['/client/login']"><h2>Vous avez déjà un compte ? se connecter</h2></a>
+						</div>
+                        
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>

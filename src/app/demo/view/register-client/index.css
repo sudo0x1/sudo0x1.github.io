@@ -347,8 +347,6 @@ img {
     font-weight: normal;
     color: #918F8F;
   }
-
-  
   .forget-pass a::after {
     content: "";
     position: absolute;

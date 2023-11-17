@@ -3,9 +3,9 @@
 <div class="card">
 	<p-toolbar styleClass="p-mb-4">
 		<ng-template pTemplate="left">
-		Bonjour MR "{{user.username}}"<br>
-		Votre Solde est de {{user.balance}} DH <br>
-		Votre code pour Transfert d'argent {{user.userId}}
+		Bonjour MR "{{user?.username}}"<br>
+		Votre Solde est de {{user?.balance}} DH <br>
+		Votre code pour Transfert d'argent {{user?.userId}}
 		</ng-template>
 	</p-toolbar>
 </div>

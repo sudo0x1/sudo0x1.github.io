@@ -120,6 +120,7 @@ import { AppClientsComponent } from './demo/view/clients/app.clients.component';
 import { AppBonsClientsComponent } from './demo/view/bons-clients/app.bons.clients.component';
 import { AppTransfertComponent } from './demo/view/transfert/app.transfert.component';
 import { AppHistoriqueComponent } from './demo/view/transfer-historique/app.historique.component';
+import { AppClientRegisterComponent } from './demo/view/register-client/app.client.register.component';
 
 
 @NgModule({
@@ -241,6 +242,7 @@ import { AppHistoriqueComponent } from './demo/view/transfer-historique/app.hist
         ProfileSettingsComponent,
         AppTransfertComponent,
         AppHistoriqueComponent,
+        AppClientRegisterComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

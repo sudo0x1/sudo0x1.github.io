@@ -6,14 +6,16 @@ import { TokenStorageService } from 'src/app/demo/service/TokenStorageService';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './app.admin.login.component.html',
+  templateUrl: './app.client.register.component.html',
   styleUrls:["./index.css"],
   providers: [ConfirmationService]
 })
-export class AppAdminLoginComponent implements OnInit{
+export class AppClientRegisterComponent implements OnInit{
+  // form: any = {
   username:string;
+  email:string;
   password:string;
-
+  // };
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -29,29 +31,27 @@ export class AppAdminLoginComponent implements OnInit{
   }
   onSubmit(): void {
 
-    this.authService.login(this.username, this.password).subscribe(
+    this.authService.registerClient(this.username,this.email, this.password).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUser(data);
+        // this.tokenStorage.saveToken(data.token);
+        // this.tokenStorage.saveUser(data);
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        // this.isLoginFailed = false;
+        // this.isLoggedIn = true;
+        // this.roles = this.tokenStorage.getUser().roles;
         this.messageService.add({severity: 'success', summary: 'Success', detail: "Welcome", life: 4000});
-        if(this.roles.includes("BANQUIER")){
-          this.router.navigate(["/admin"]);
-        }else if(this.roles.includes("CLIENT")){
-            this.router.navigate(["/client"]);
-        }else{
+        // if(this.roles.includes("BANQUIER")){
+          this.router.navigate(["/client/login"]);
+        // }else if(this.roles.includes("CLIENT")){
+            // this.router.navigate(["/client"]);
+        // }else{
             
-        }
+        // }
+       
       },
       err => {
-        console.log("test");
         this.messageService.add({severity: 'error', summary: 'Error', detail: err.error.message, life: 4000});
-        // this.errorMessage = err.message;
-        // console.log(err.error.message);
-        // this.isLoginFailed = true;
+     
       }
     );
   }
